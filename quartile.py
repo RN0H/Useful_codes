@@ -11,7 +11,7 @@ def quartile(x):
 	'''
 	data should be sorted
 	'''
-	x = sorted(x)
+	x.sort()
 
 	'''
 	return [Q1, Q2, Q3] ..WHERE Q is quartile
