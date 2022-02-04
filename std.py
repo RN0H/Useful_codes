@@ -40,3 +40,4 @@ def std(data, stepsize):
 
 	plt.show()
 
+std([1,2,3,4,5,6,7], 0.01)
