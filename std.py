@@ -11,12 +11,12 @@ def std(data, stepsize):
 	standard deviation(σ) = (variance)^1/2
 
 	'''
+	data.sort()
 	mean = sum(data)/len(data)
 
 	var = sum((i - mean)**2 for i in data)/len(data)
 
 	std = var**.5
-
 	'''
 	quality of the distribution using the step-size
 
@@ -39,3 +39,4 @@ def std(data, stepsize):
 	plt.legend(['Normal distribution', 'μ'], loc = 'upper right')
 
 	plt.show()
+
