@@ -54,12 +54,8 @@ def ways(word):
 		if number>1:
 			denominator*=fact(number)
 
-	words_perm = fact(word_count)/denominator
+	words_perm = fact(word_count+1)/denominator
 
-	'''
-	The vowels are together, therefore there are 'non-vowels+1' spaces
-	'''
+	return int(vowel_perm*words_perm)
 
-	return int(vowel_perm*words_perm*(word_count + 1))
-
-print(ways('ACCLAIM'))
+print(ways('MAXIMA'))
