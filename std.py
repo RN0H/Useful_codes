@@ -29,7 +29,7 @@ def std(data, stepsize):
 	F(μ, σ, x) = (1/σ√2π)e^((−(x−μ)(x−μ).T)/2σ^2)
 	constant = (1/σ√2π)
 	'''
-	constant = 0.3989422806293617/std
+	constant = 0.39894228062936171/std
 
 
 	plt.grid()
