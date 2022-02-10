@@ -30,13 +30,29 @@ def std(data, stepsize):
 	constant = (1/σ√2π)
 	'''
 	constant = 0.39894228062936171/std
-
+	median = Median(data)
 
 	plt.grid()
 
 	plt.plot(spread, constant*np.exp(-((spread - mean)**2)/2*var), 'r', \
-			[mean for _ in np.arange(0,constant,stepsize)], np.arange(0,constant,stepsize), 'b')
-	plt.legend(['Normal distribution', 'μ'], loc = 'upper right')
+			[mean for _ in np.arange(0,constant,stepsize)], np.arange(0,constant,stepsize), 'b', \
+			[median for _ in np.arange(0,constant,stepsize)], np.arange(0,constant,stepsize), 'g')
+	plt.legend(['Normal distribution', 'mean', 'median'], loc = 'upper right')
 
 	plt.show()
 
+def Median(x):
+	length = len(x)
+	half = length>>1
+	
+	'''
+	if length is odd -> select the middle
+	else -> select 2 middle elements and find their average
+	'''
+
+	middle = x[half -(~length&1) : half + 1]
+	median = sum(middle)/len(middle)
+	return median
+
+
+print(std([1,1,2,2,2,2,2,2,2,2,2,3,4,5,6,7,8], 0.01))
