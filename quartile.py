@@ -26,7 +26,6 @@ def Median(x):
 	if length is odd -> select the middle
 	else -> select 2 middle elements and find their average
 	'''
-
 	middle = x[half -(~length&1) : half + 1]
 	median = sum(middle)/len(middle)
 	return median
