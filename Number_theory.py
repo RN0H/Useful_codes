@@ -1,8 +1,10 @@
 from collections import defaultdict as d
 
 '''
-
 Q1: Find number of trailing zeros in a factorial
+
+Example: INPUT: 5! = 120 
+		 OUTPUT: 1 	(120 has 1 trailing 0)
 
 '''
 
@@ -18,30 +20,45 @@ def trailing_zeros(n):
 '''
 
 Q2: Find the maximum power of a number in a factorial
-TBD
+
+EXAMPLE: 
+
 '''
 
-def maxpow(factorial, n):
+def maxpow(factorial, number):
 
 	'''
-	Decompose n into primes
+	Create a hashtable of {primes:exponent}.
+
+	Decompose the number into primes.
+
 	'''
-	c = d(int)
-	
-	for i in range(2,n+1):
-		if n<=1:
-			break
-		elif n%i == 0:
-			while n%i == 0:
-				c[i]+=1
-				n//=i
-	for i in c:
+	prime_factors = d(int)
+	for i in range(2, number+1):
+		if number<=1:	break
+		elif number%i == 0:
+			while number%i == 0:
+				prime_factors[i]+=1
+				number//=i
+	'''
+	for every prime factor find its highest exponent
+	in that factorial.
+
+	Then divide the highest exponent by its exponent
+	in the number.	
+	'''
+	for i in prime_factors:
 		exp = 0
 		f = factorial
 		while f>=1:
 			f//=i
 			exp+=f
-		c[i] = exp//c[i]
-	power = c[min(c, key = lambda k: c[k])]
-	return power
+		prime_factors[i] = exp//prime_factors[i]
 
+	'''
+	Find the minimum exponent in the hashtable 
+	which will be  the exponent of the number.
+	'''
+	power = prime_factors[min(prime_factors, key = lambda k: prime_factors[k])]
+	
+	return power
