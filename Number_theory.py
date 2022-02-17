@@ -3,7 +3,7 @@ from collections import defaultdict as d
 '''
 Q1: Find number of trailing zeros in a factorial
 
-Example: INPUT: 5! = 120 
+EXAMPLE: INPUT: 5! = 120 
 		 OUTPUT: 1 	(120 has 1 trailing 0)
 
 '''
@@ -21,8 +21,8 @@ def trailing_zeros(n):
 
 Q2: Find the maximum power of a number in a factorial
 
-EXAMPLE: 
-
+EXAMPLE: INPUT: 25!, 8
+		 OUTPUT: 7 (maximum power of 8 in 25! is 7)
 '''
 
 def maxpow(factorial, number):
