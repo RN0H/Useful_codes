@@ -27,6 +27,7 @@ def maxpow(factorial, n):
 	Decompose n into primes
 	'''
 	c = d(int)
+	
 	for i in range(2,n+1):
 		if n<=1:
 			break
@@ -40,7 +41,7 @@ def maxpow(factorial, n):
 		while f>=1:
 			f//=i
 			exp+=f
-		c[i]=exp
-	return c
+		c[i] = exp//c[i]
+	power = c[min(c, key = lambda k: c[k])]
+	return power
 
-print(maxpow(10,6))
