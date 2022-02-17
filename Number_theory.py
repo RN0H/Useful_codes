@@ -28,19 +28,19 @@ def maxpow(factorial, n):
 	'''
 	c = d(int)
 	for i in range(2,n+1):
-		if n == 1:
-			print(c)
-			for i in c:
-				exp = 0
-				f = factorial
-				while f>=1:
-					f//=i
-					exp+=f
-				c[i]=exp
-			return c
+		if n<=1:
+			break
 		elif n%i == 0:
 			while n%i == 0:
 				c[i]+=1
 				n//=i
+	for i in c:
+		exp = 0
+		f = factorial
+		while f>=1:
+			f//=i
+			exp+=f
+		c[i]=exp
+	return c
 
-print(maxpow(14,4))
+print(maxpow(10,6))
