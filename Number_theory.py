@@ -61,3 +61,5 @@ def maxpow(factorial, number):
 	power = prime_factors[min(prime_factors, key = lambda k: prime_factors[k])]
 	
 	return power
+
+print(maxpow(99,97))

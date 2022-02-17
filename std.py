@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from quartile import Median
 
 
 def std(data, stepsize):
@@ -41,18 +42,7 @@ def std(data, stepsize):
 
 	plt.show()
 
-def Median(x):
-	length = len(x)
-	half = length>>1
-	
-	'''
-	if length is odd -> select the middle
-	else -> select 2 middle elements and find their average
-	'''
 
-	middle = x[half -(~length&1) : half + 1]
-	median = sum(middle)/len(middle)
-	return median
 
 
 print(std([1,1,2,2,2,2,2,2,2,2,2,3,4,5,6,7,8], 0.01))
