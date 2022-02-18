@@ -61,5 +61,35 @@ def maxpow(factorial, number):
 	power = prime_factors[min(prime_factors, key = lambda k: prime_factors[k])]
 	
 	return power
+'''
 
-print(maxpow(99,97))
+Q2: last digit of (x^(x1^(x2....)))
+
+'''
+
+table = {0:(1, {0:0}),
+		1:(1, {0:1}),					#{digit: (mod, map)}
+		2:(4, {1:2, 2: 4, 3:8, 0:6}), 
+		3:(4, {1:3, 2:9, 3:7, 0:1}), 
+		4:(2, {1:4, 0:6}), 
+		5:(1, {0:5}),
+		6:(1, {0:6}),
+		7:(4, {1:7, 2:9, 3:3, 0:1}),
+		8:(4, {1:8, 2:4, 3:2, 0:6}),
+		9:(2, {1:9, 0:1})}
+def last_digit(lst):
+    if len(lst)<=1 or lst == [0, 0]: return 1
+    print(lst)
+    while len(lst)>2:
+        mod, d = table[int(str(lst[-2])[-1])]
+        if lst[-1] == 0:
+            lst[-2] = 1
+        elif lst[-1] == 1:
+            pass
+        else:
+            a = d[lst[-1]%mod]
+            lst[-2]*=a
+        lst.pop()
+    mod, d = table[int(str(lst[-2])[-1])]
+    a = d[lst[-1]%mod]
+    return a
