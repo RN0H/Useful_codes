@@ -59,7 +59,7 @@ def coef(n, r):
 	'''
 	numerator, denominator= 1, 1
 	for x in range(n, 0,-1):
-        
+
 		if x <= r: break
 		else:
 			numerator*=x
@@ -72,5 +72,3 @@ def getterms(ex, minus):
     else:         x, y = ex[minus:].split('-'); y = '-'+y
     if minus: x = '-' + x
     return x,y
-
-print(expand("(2m+4)^4"))
