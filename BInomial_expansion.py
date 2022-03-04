@@ -45,7 +45,7 @@ def expand(expr):
     	if totalcoef >=1:                      #positive
     		if totalcoef == 1 and power == n:     res.append( f"{term}")
     		elif totalcoef == 1 and power == 0:   res.append( f"{totalcoef}")
-    		else:                                 res.append(f"+{totalcoef}{term}")
+    		else:                                 res.append( f"+{totalcoef}{term}")
     						
     	else: res.append(f"{totalcoef}{term}") #negative
     		
