@@ -14,6 +14,7 @@ def std(data, stepsize):
 	'''
 	data.sort()
 	mean = sum(data)/len(data)
+	mode = max(data, key = lambda i: data.count(i))
 
 	var = sum((i - mean)**2 for i in data)/len(data)
 
@@ -25,24 +26,33 @@ def std(data, stepsize):
 
 	spread = np.arange(data[0], data[-1], stepsize)
 
+
 	'''
 	plot 
 	F(μ, σ, x) = (1/σ√2π)e^((−(x−μ)(x−μ).T)/2σ^2)
 	constant = (1/σ√2π)
 	'''
-	constant = 0.39894228062936171/std
+	constant = 1#0.39894228062936171/std
+
+	
 	median = Median(data)
+
+	likelihood = lambda i: constant*np.exp(-(i-mean)**2/2*var)
 
 	plt.grid()
 
 	plt.plot(spread, constant*np.exp(-((spread - mean)**2)/2*var), 'r', \
-			[mean for _ in np.arange(0,constant,stepsize)], np.arange(0,constant,stepsize), 'b', \
-			[median for _ in np.arange(0,constant,stepsize)], np.arange(0,constant,stepsize), 'g')
-	plt.legend(['Normal distribution', 'mean', 'median'], loc = 'upper right')
+			[mean for _ in np.arange(0,likelihood(mean),stepsize)], np.arange(0,likelihood(mean),stepsize), 'b', \
+			[median for _ in np.arange(0,likelihood(median),stepsize)], np.arange(0,likelihood(median),stepsize), 'g', \
+			)
+	plt.plot([mode for _ in np.arange(0,likelihood(mode),stepsize)], np.arange(0,likelihood(mode),stepsize), 'purple', linestyle = "dashdot")
+	plt.legend(['Normal distribution', 'mean', 'median', 'mode'], loc = 'upper right')
+	plt.xlabel("Dataset"); plt.ylabel("likelihood")
+	print("Mean={}\nMode={}\nMedian={}\nSTD={}".format(mean,mode,median,std))
 
 	plt.show()
 
 
 
 
-print(std([1,1,2,2,2,2,2,2,2,2,2,3,4,5,6,7,8], 0.01))
+print(std([1,1,2,2,2,2,2,3,3,3,3,3,4,5,6,6,7], 0.0001))
