@@ -84,17 +84,16 @@ def sieve_of_eratosthenes2(n):
 		ssq = s*s
 	return [i for i in range(2, n+1) if table[i]]
 
+#a = 10000
 
-a = 10000
+# start = timeit.default_timer()
+# v = sieve_of_eratosthenes(a)
+# print("Exectution time: {}ms".format(1e3*(timeit.default_timer()-start)))
 
-start = timeit.default_timer()
-v = sieve_of_eratosthenes(a)
-print("Exectution time: {}ms".format(1e3*(timeit.default_timer()-start)))
+# start = timeit.default_timer()
+# assert v == prime(2,a)
+# print("Exectution time: {}ms".format(1e3*(timeit.default_timer()-start)))
 
-start = timeit.default_timer()
-assert v == prime(2,a)
-print("Exectution time: {}ms".format(1e3*(timeit.default_timer()-start)))
-
-start = timeit.default_timer()
-assert v == sieve_of_eratosthenes2(a)
-print("Exectution time: {}ms".format(1e3*(timeit.default_timer()-start)))
+# start = timeit.default_timer()
+# assert v == sieve_of_eratosthenes2(a)
+# print("Exectution time: {}ms".format(1e3*(timeit.default_timer()-start)))

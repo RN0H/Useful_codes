@@ -1,5 +1,6 @@
 from collections import defaultdict as d
-
+from Primes import sieve_of_eratosthenes
+from functools import reduce
 '''
 Q1: Find number of trailing zeros in a factorial
 
@@ -63,33 +64,37 @@ def maxpow(factorial, number):
 	return power
 '''
 
-Q2: last digit of (x^(x1^(x2....)))
+Q2: GCD of n numbers (without using math.gcd)
 
 '''
 
-table = {0:(1, {0:0}),
-		1:(1, {0:1}),					#{digit: (mod, map)}
-		2:(4, {1:2, 2: 4, 3:8, 0:6}), 
-		3:(4, {1:3, 2:9, 3:7, 0:1}), 
-		4:(2, {1:4, 0:6}), 
-		5:(1, {0:5}),
-		6:(1, {0:6}),
-		7:(4, {1:7, 2:9, 3:3, 0:1}),
-		8:(4, {1:8, 2:4, 3:2, 0:6}),
-		9:(2, {1:9, 0:1})}
-def last_digit(lst):
-    if len(lst)<=1 or lst == [0, 0]: return 1
-    print(lst)
-    while len(lst)>2:
-        mod, d = table[int(str(lst[-2])[-1])]
-        if lst[-1] == 0:
-            lst[-2] = 1
-        elif lst[-1] == 1:
-            pass
-        else:
-            a = d[lst[-1]%mod]
-            lst[-2]*=a
-        lst.pop()
-    mod, d = table[int(str(lst[-2])[-1])]
-    a = d[lst[-1]%mod]
-    return a
+def GCD(*n):
+	numbers = d(int)
+	for i in n:
+		l = i
+		prime_factors = d(int)
+		for j in range(2, i+1):
+			if j<=1:	break
+			elif i%j == 0:
+				while i%j == 0:
+					prime_factors[j]+=1
+					i//=j
+		numbers[l] = prime_factors
+	end = max(numbers[n[0]].items(), key = lambda i:i[0])
+	all_primes = sieve_of_eratosthenes(end[0]+1)
+	comm = {}
+	for p in all_primes:
+		for number, factors in numbers.items():
+			if p in factors:
+				if p not in comm:
+					comm[p] = factors[p]
+				else:
+					comm[p] = min(comm[p], factors[p])
+			else:
+				comm[p] = 0
+	prod = 1
+	for fact, power in comm.items():
+		if power:
+			prod*=fact**power
+	return prod
+
