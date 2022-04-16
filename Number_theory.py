@@ -1,6 +1,6 @@
 from collections import defaultdict as d
 from Primes import sieve_of_eratosthenes
-from functools import reduce
+
 '''
 Q1: Find number of trailing zeros in a factorial
 
@@ -97,4 +97,5 @@ def GCD(*n):
 		if power:
 			prod*=fact**power
 	return prod
+
 
