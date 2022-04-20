@@ -99,3 +99,21 @@ def GCD(*n):
 	return prod
 
 
+'''
+Q2: Last digit of a number
+For a given list [x1, x2, x3, ..., xn] compute the last (decimal) digit of x1 ^ (x2 ^ (x3 ^ (... ^ xn))). 
+
+eg:- 3 ^ (4 ^ 2) = 3 ^ 16 = 43046721
+
+references:-http://www.codewars.com/kata/last-digit-of-a-large-number/haskell
+			https://brilliant.org/wiki/finding-the-last-digit-of-a-power/
+
+'''
+
+def last_digit(lst):
+    if not lst: return 1
+    xs = 1
+    for n in reversed(lst):xs = n ** ([xs % 4 + 4, xs][xs<4])
+    return xs % 10
+
+
