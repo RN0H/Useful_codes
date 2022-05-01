@@ -23,7 +23,6 @@ def std(data, stepsize):
 	quality of the distribution using the step-size
 
 	'''
-
 	spread = np.arange(data[0], data[-1], stepsize)
 
 
@@ -55,4 +54,4 @@ def std(data, stepsize):
 
 
 
-print(std([1,1,2,2,2,2,2,3,3,3,3,4,4,5,6,6,7,8,10], 0.0001))
+print(std([1,2,3,4], 0.0001))
